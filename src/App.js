@@ -419,23 +419,11 @@ const App = () => {
 };
 
 // Render the appropriate page based on currentPage state
-const renderPage = () => {
-  switch (currentPage) {
-    case 'home':
-      return <HomePage />;
-    case 'cart':
-      return <CartPage />;
-    case 'checkout':
-      return <CheckoutPage />;
-    case 'order-confirmation':
-      return <OrderConfirmationPage />;
-    default:
-      return <HomePage />;
-  }
-};
+// Ini perlu berada di dalam komponen App atau sebagai fungsi berasingan yang dipanggil oleh App
+// const renderPage = () => { ... } <--- baris ini dipindahkan ke dalam App di bawah
 
 return (
-  <div className="min-h-screen bg-gray-100 font-sans antialiased">
+  <div className="min-h-screen bg-[#4C5633] font-sans antialiased">
     {/* Global Tailwind CSS import for Inter font and basic styles */}
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
@@ -458,14 +446,14 @@ return (
       }
       `}
     </style>
-    <header className="bg-white shadow-md p-4 flex justify-between items-center sticky top-0 z-10 rounded-b-lg">
-      <h1 className="text-2xl font-bold text-blue-700">take.app Clone</h1>
+    <header className="bg-[#3D452B] shadow-md p-4 flex justify-between items-center sticky top-0 z-10 rounded-b-lg">
+      <h1 className="text-2xl font-bold text-white">Bratstvo Store</h1> {/* Nama ditukar di sini */}
       <nav>
         <ul className="flex space-x-4">
           <li>
             <button
               onClick={() => setCurrentPage('home')}
-              className={`flex items-center px-4 py-2 rounded-full transition-colors ${currentPage === 'home' ? 'bg-blue-600 text-white' : 'text-gray-700 hover:bg-gray-200'}`}
+              className={`flex items-center px-4 py-2 rounded-full transition-colors ${currentPage === 'home' ? 'bg-blue-600 text-white' : 'text-gray-200 hover:bg-[#5C6A48]'}`}
             >
               <Home className="mr-1" size={20} /> Laman Utama
             </button>
@@ -473,7 +461,7 @@ return (
           <li>
             <button
               onClick={() => setCurrentPage('cart')}
-              className={`flex items-center px-4 py-2 rounded-full transition-colors ${currentPage === 'cart' ? 'bg-blue-600 text-white' : 'text-gray-700 hover:bg-gray-200'}`}
+              className={`flex items-center px-4 py-2 rounded-full transition-colors ${currentPage === 'cart' ? 'bg-blue-600 text-white' : 'text-gray-200 hover:bg-[#5C6A48]'}`}
             >
               <ShoppingCart className="mr-1" size={20} /> Troli ({cartItems.length})
             </button>
@@ -483,11 +471,11 @@ return (
     </header>
 
     <main className="container mx-auto py-8">
-      {renderPage()}
+      {renderPage()} {/* Memanggil fungsi renderPage */}
     </main>
 
-    <footer className="bg-gray-800 text-white text-center p-4 mt-8 rounded-t-lg">
-      <p>&copy; 2025 take.app Clone. Hak Cipta Terpelihara.</p>
+    <footer className="bg-[#3D452B] text-gray-300 text-center p-4 mt-8 rounded-t-lg">
+      <p>&copy; 2025 Bratstvo Store. Hak Cipta Terpelihara.</p> {/* Nama ditukar di sini */}
     </footer>
   </div>
 );
