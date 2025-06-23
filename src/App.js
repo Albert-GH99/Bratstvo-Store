@@ -416,69 +416,81 @@ const App = () => {
       </button>
     </div>
   );
-};
 
-// Render the appropriate page based on currentPage state
-// Ini perlu berada di dalam komponen App atau sebagai fungsi berasingan yang dipanggil oleh App
-// const renderPage = () => { ... } <--- baris ini dipindahkan ke dalam App di bawah
+  // Render the appropriate page based on currentPage state
+  // Baris ini mesti berada di dalam komponen App. Kesilapan meletakkannya di luar akan menyebabkan ralat 'return outside of function'.
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'home':
+        return <HomePage />;
+      case 'cart':
+        return <CartPage />;
+      case 'checkout':
+        return <CheckoutPage />;
+      case 'order-confirmation':
+        return <OrderConfirmationPage />;
+      default:
+        return <HomePage />;
+    }
+  };
 
-return (
-  <div className="min-h-screen bg-[#4C5633] font-sans antialiased">
-    {/* Global Tailwind CSS import for Inter font and basic styles */}
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <style>
-      {`
-      body {
-        font-family: 'Inter', sans-serif;
-      }
-      /* Custom styles for button hover effects - subtle lift and shadow */
-      button {
-        transition: all 0.3s ease;
-      }
-      button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      }
-      /* Ensures the app takes full width and height on mobile for better responsiveness */
-      #root, body, html {
-          height: 100%;
-          width: 100%;
-      }
-      `}
-    </style>
-    <header className="bg-[#3D452B] shadow-md p-4 flex justify-between items-center sticky top-0 z-10 rounded-b-lg">
-      <h1 className="text-2xl font-bold text-white">Bratstvo Store</h1> {/* Nama ditukar di sini */}
-      <nav>
-        <ul className="flex space-x-4">
-          <li>
-            <button
-              onClick={() => setCurrentPage('home')}
-              className={`flex items-center px-4 py-2 rounded-full transition-colors ${currentPage === 'home' ? 'bg-blue-600 text-white' : 'text-gray-200 hover:bg-[#5C6A48]'}`}
-            >
-              <Home className="mr-1" size={20} /> Laman Utama
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => setCurrentPage('cart')}
-              className={`flex items-center px-4 py-2 rounded-full transition-colors ${currentPage === 'cart' ? 'bg-blue-600 text-white' : 'text-gray-200 hover:bg-[#5C6A48]'}`}
-            >
-              <ShoppingCart className="mr-1" size={20} /> Troli ({cartItems.length})
-            </button>
-          </li>
-        </ul>
-      </nav>
-    </header>
+  return (
+    <div className="min-h-screen bg-[#4C5633] font-sans antialiased">
+      {/* Global Tailwind CSS import for Inter font and basic styles */}
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+      <style>
+        {`
+        body {
+          font-family: 'Inter', sans-serif;
+        }
+        /* Custom styles for button hover effects - subtle lift and shadow */
+        button {
+          transition: all 0.3s ease;
+        }
+        button:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        /* Ensures the app takes full width and height on mobile for better responsiveness */
+        #root, body, html {
+            height: 100%;
+            width: 100%;
+        }
+        `}
+      </style>
+      <header className="bg-[#3D452B] shadow-md p-4 flex justify-between items-center sticky top-0 z-10 rounded-b-lg">
+        <h1 className="text-2xl font-bold text-white">Bratstvo Store</h1> {/* Nama ditukar di sini */}
+        <nav>
+          <ul className="flex space-x-4">
+            <li>
+              <button
+                onClick={() => setCurrentPage('home')}
+                className={`flex items-center px-4 py-2 rounded-full transition-colors ${currentPage === 'home' ? 'bg-blue-600 text-white' : 'text-gray-200 hover:bg-[#5C6A48]'}`}
+              >
+                <Home className="mr-1" size={20} /> Laman Utama
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => setCurrentPage('cart')}
+                className={`flex items-center px-4 py-2 rounded-full transition-colors ${currentPage === 'cart' ? 'bg-blue-600 text-white' : 'text-gray-200 hover:bg-[#5C6A48]'}`}
+              >
+                <ShoppingCart className="mr-1" size={20} /> Troli ({cartItems.length})
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-    <main className="container mx-auto py-8">
-      {renderPage()} {/* Memanggil fungsi renderPage */}
-    </main>
+      <main className="container mx-auto py-8">
+        {renderPage()} {/* Memanggil fungsi renderPage */}
+      </main>
 
-    <footer className="bg-[#3D452B] text-gray-300 text-center p-4 mt-8 rounded-t-lg">
-      <p>&copy; 2025 Bratstvo Store. Hak Cipta Terpelihara.</p> {/* Nama ditukar di sini */}
-    </footer>
-  </div>
-);
+      <footer className="bg-[#3D452B] text-gray-300 text-center p-4 mt-8 rounded-t-lg">
+        <p>&copy; 2025 Bratstvo Store. Hak Cipta Terpelihara.</p> {/* Nama ditukar di sini */}
+      </footer>
+    </div>
+  );
 };
 
 export default App;
