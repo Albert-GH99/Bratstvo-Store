@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, } from 'react';
 import { ShoppingCart, Package, Home, ArrowLeft } from 'lucide-react';
 
 // Main App component
