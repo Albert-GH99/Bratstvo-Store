@@ -25,12 +25,15 @@ const App = () => {
     { id: 2, name: 'Roti Bakar', price: 8.50, image: 'https://placehold.co/150x150/dbeafe/1e40af?text=Roti' },
     { id: 3, name: 'Nasi Lemak', price: 15.00, image: 'https://placehold.co/150x150/dbeafe/1e40af?text=Nasi' },
     { id: 4, name: 'Mee Goreng', price: 13.50, image: 'https://placehold.co/150x150/dbeafe/1e40af?text=Mee' },
+    { id: 4, name: 'Baju', price: 30.00, image: 'https://placehold.co/150x150/dbeafe/1e40af?text=Baju' },
   ];
 
   // Example discount codes (simple flat discount for demonstration)
   const availableDiscounts = {
     'DISKAUN10': { type: 'percentage', value: 0.10 }, // 10% discount
     'POTONGAN5': { type: 'flat', value: 5.00 },     // RM5 flat discount
+    'HAFIZSR': { type: 'flat', value: 10.00 },     // RM10 flat discount
+    'MHHQ': { type: 'flat', value: 10.00 },     // RM10 flat discount
   };
 
   // Function to add item to cart or increase quantity if already exists
