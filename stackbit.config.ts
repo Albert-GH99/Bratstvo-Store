@@ -17,3 +17,10 @@ export default defineStackbitConfig({
     page: { type: 'page', urlPath: '/{slug}' },
   },
 }
+export default {
+  stackbitVersion: '~0.6.0',
+  // other properties ...
+export default {
+  useESM: true,
+  // other properties ...
+}
